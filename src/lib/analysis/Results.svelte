@@ -47,7 +47,7 @@
     webhooks = await scanWebhooks();
   };
   const nukeWebhooks = async () => {
-    const message = `⛔ Access Revoked: Your webhook has been shut down for not adhering to the [Terms of Service](https://discord.com/terms). We have recorded your account information, and immediate discontinuation of these violations is required to avoid further action.`;
+    const message = `Hey! Its the Discord Trust & Safety Team! We have revoked access to your webhook due to not adhering to out Trust & Safety Guidelines. Any Further Action will result in Account Termination.`;
 
     // @ts-expect-error
     for (const webhook of webhooks) {
