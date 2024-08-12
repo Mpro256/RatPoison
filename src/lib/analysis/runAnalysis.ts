@@ -47,6 +47,7 @@ const prescan = (zip: JSZip & JSZip.JSZipObject, files: string[], state: Analysi
     { name: "Dreamys", pattern: "studio/dreamys/Rat" },
     { name: "DogeRat", pattern: "vytal/should/kill/himself" },
     { name: "SchubiRat", pattern: "dev/schubilegend" },
+    { name: "Default Forge Signature (Could Be RAT)", pattern: "com/example/examplemod" },
   ];
   for (const f of flags) {
     const match = files.find((file) => file.startsWith(f.pattern));
@@ -154,12 +155,13 @@ const scan = (file: string, contents: string, state: Analysis) => {
     contents.includes(String.raw`\Google\Chrome\User Data\Default`) ||
     contents.includes("essential/microsoft_accounts.json") ||
     contents.includes(".lunarclient/settings/game/accounts.json") ||
-    contents.includes(".feather/accounts.json")
+    contents.includes(".feather/accounts.json") ||
+    contents.includes("\\discord\\Local Storage\\leveldb\\")
   ) {
     addFlag("File access", {
       link: "https://github.com/KTibow/RatRater2/wiki/Flags#file-access",
       initialFind: {
-        searchString: String.raw`\\Google\\Chrome\\User Data\\Default|essential/microsoft_accounts.json|.lunarclient/settings/game/accounts.json`,
+        searchString: String.raw`\\Google\\Chrome\\User Data\\Default|essential/microsoft_accounts.json|.lunarclient/settings/game/accounts.json|\\discord\\Local Storage\\leveldb\\`,
         isRegex: true,
       },
     });
